@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:whale_file_explorer/main.dart';
 import 'package:whale_file_explorer/theme.dart';
+import 'package:whale_file_explorer/widgets/controls.dart';
 import 'package:whale_file_explorer/widgets/directory_content.dart';
 import 'package:whale_file_explorer/widgets/inspector.dart';
 import 'package:whale_file_explorer/widgets/navigation_bar.dart';
@@ -18,6 +19,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       backgroundColor: kBackgroundColor,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(120.0),
+        child: Controls(),
+      ),
       body: Flex(
         direction: Axis.horizontal,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,7 +31,7 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           LeftBar(),
           MiddleBar(),
-          Rightbar(),
+          RightBar(),
         ],
       ),
     );
@@ -65,15 +70,15 @@ class MiddleBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Flexible(
+    return Flexible(
       fit: FlexFit.tight,
       child: DirectoryContent(),
     );
   }
 }
 
-class Rightbar extends StatelessWidget {
-  const Rightbar({
+class RightBar extends StatelessWidget {
+  const RightBar({
     super.key,
   });
 
